@@ -13,13 +13,22 @@
             margin: 0;
             color: white; /* เปลี่ยนเป็นสีขาว เพื่อให้เห็นชัดเจนบนพื้นหลัง */
             font-family: Arial, sans-serif; /* เพิ่ม font-family เพื่อให้อ่านง่ายขึ้น */
+            
+            /* VVV 1. (แก้ไข) ลบ padding-top ออกจาก body VVV */
+            /* padding-top: 50px; */
+            
+            /* VVV (หมายเหตุ) text-align: center; อยู่ที่นี่ VVV */
+            text-align: center; 
         }
 
         .container {
             display: flex; /* ใช้ flexbox เพื่อจัดวางองค์ประกอบภายใน */
             justify-content: center; /* จัดตรงกลางแนวนอน */
             align-items: flex-start; /* จัดให้อยู่ด้านบน */
-            padding-top: 50px; /* เว้นระยะห่างจากขอบบน */
+            
+            /* VVV 2. (แก้ไข) ลด padding-top ลง VVV */
+            padding-top: 30px; /* เว้นระยะห่างจากขอบบน (h1) */
+            
             min-height: calc(100vh - 50px); /* ให้ container สูงเกือบเต็มจอ */
         }
 
@@ -115,37 +124,38 @@
 </head>
 <body>
     <h1>Customer Reviews</h1>
+
     <div class="container">
         <div class="news-box">
             <div class="main-news-section">
                 <img src="https://raw.githubusercontent.com/felt890/Lisan-al-Gaib/main/image/89969a75098c07cd8e289bad831ea4a2.jpg" alt="Breaking News" class="main-news-image">
                 <div class="main-news-title">
-                    BREAKING NEWS
-                    <p style="font-size:0.8em; color:#ccc;">#AUS小屋</p>
-                    <p style="font-size:0.8em; color:#ccc;">一起炖饭 (有点辣!)</p>
+                    ความคิดเห็นต่อร้าน
+                    <p style="font-size:0.8em; color:#ccc;">คนแน่นร้านเกินไปหน่อยแต่ส่วนรวมถือเป็นร้านที่ดีมาก</p>
+                    <p style="font-size:0.8em; color:#ccc;"></p>
                 </div>
-                <a href="#" class="main-news-button">点击查看</a> </div>
+                <a href="#" class="main-news-button">4.5ดาว</a> </div>
 
             <div class="side-news-list">
                 <div class="side-news-item">
-                    <div class="side-news-date">艺人发文 / 2023/04/28</div>
-                    <div class="side-news-hashtag">#AUS小屋</div>
+                    <div class="side-news-date">ลูกค้า </div>
+                    <div class="side-news-hashtag">EMPEROR</div>
                 </div>
                 <div class="side-news-item">
-                    <div class="side-news-date">艺人发文 / 2023/03/29</div>
-                    <div class="side-news-hashtag">#D.D.D.PHOTO</div>
+                    <div class="side-news-date">อาหารที่ชื่นชอบ</div>
+                    <div class="side-news-hashtag">แกงเขียวหวาน</div>
                 </div>
                 <div class="side-news-item">
-                    <div class="side-news-date">艺人发文 / 2023/02/19</div>
-                    <div class="side-news-hashtag">#AUS小屋</div>
+                    <div class="side-news-date">ช่วงเวลาที่มา</div>
+                    <div class="side-news-hashtag">ช่วงเช้า</div>
                 </div>
                 <div class="side-news-item">
-                    <div class="side-news-date">艺人发文 / 2023/01/22</div>
-                    <div class="side-news-hashtag">#EMPEROR</div>
+                    <div class="side-news-date">ความพึงพอใจต่อการบริการ</div>
+                    <div class="side-news-hashtag">ดีมาก</div>
                 </div>
                 <div class="side-news-item">
-                    <div class="side-news-date">艺人发文 / 2022/12/27</div>
-                    <div class="side-news-hashtag">#D.D.D.PHOTO</div>
+                    <div class="side-news-date">ความชื่นชอบต่อร้าน</div>
+                    <div class="side-news-hashtag">ดีมาก</div>
                 </div>
             </div>
         </div>
