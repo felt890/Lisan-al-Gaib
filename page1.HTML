@@ -49,13 +49,13 @@
         /* 1. สั่งให้ของข้างใน (โลโก้, กล่องข้อความ) เรียงแนวนอน */
         display: flex; 
         
-        /* 2. จัดให้โลโก้และกล่องข้อความอยู่ "กึ่งกลางแนวตั้ง" */
-        align-items: center; 
+        /* 2. จัดให้โลโก้และกล่องข้อความอยู่ "ชิดบน" (flex-start) */
+        align-items: flex-start; 
         
         /* 3. ย้าย margin ที่เคยอยู่บน .small-logo มาไว้ที่นี่แทน */
         margin-left: 10px;  /* (เว้น 10px จากขอบซ้าย) */
         margin-right: auto; /* (ดันให้ชิดซ้าย) */
-        margin-top: 10px;   /* (เว้น 10px จากรูปบน) */
+        margin-top: 20px;   /* (เว้น 10px จากรูปบน) */
     }
 
     /* VVV --- กล่องสำหรับห่อข้อความโดยเฉพาะ --- VVV */
@@ -71,10 +71,10 @@
         font-weight: bold; /* (เพิ่มความหนาให้ดูเป็นหัวข้อ) */
     }
 
-    /* VVV --- (แก้ไขล่าสุด) สไตล์สำหรับ "ที่อยู่" --- VVV */
+    /* VVV --- สไตล์สำหรับ "ที่อยู่" --- VVV */
     .logo-address {
         margin: 5px 0 0 0; /* เพิ่มระยะห่างด้านบน 5px */
-        font-size: 24px; /* VVV ขยายขนาดตัวอักษร VVV */
+        font-size: 24px; 
     }
 
     /* VVV --- CSS สำหรับรูปเล็ก --- VVV */
@@ -87,12 +87,39 @@
         border: 2px solid white; 
     }
 
-    /* VVV --- (เพิ่มใหม่) สไตล์สำหรับข้อความล่างสุด --- VVV */
-    .sub-heading {
-        margin-top: 30px; /* เว้นระยะห่างจากขอบบน */
-        font-size: 24px; /* ตั้งขนาดฟอนต์ให้เท่ากัน */
+    /* VVV --- สไตล์สำหรับลิงก์แผนที่ --- VVV */
+    .map-link {
+        display: block; /* ทำให้ขึ้นบรรทัดใหม่ */
+        margin-top: 15px; /* ปรับระยะห่าง */
+        font-size: 24px;
         font-weight: bold;
+        color: white; /* ตั้งค่าสีลิงก์เป็นสีขาว */
+        text-decoration: none; /* ลบเส้นใต้ */
     }
+    .map-link:hover {
+        text-decoration: underline; /* เพิ่มเส้นใต้เมื่อเมาส์ชี้ */
+    }
+    
+ 
+
+    /* VVV --- (เพิ่มใหม่) สไตล์สำหรับรูปแผนที่ใหญ่ --- VVV */
+    .map-image {
+        display: block;     /* ทำให้ขึ้นบรรทัดใหม่ */
+        width: 80%;        /* ทำให้กว้างเต็มกล่องข้อความ */
+        height: auto;       /* รักษาสัดส่วน */
+        margin-top: 15px;   /* เว้นระยะห่างจากไอคอนด้านบน */
+        border: 2px solid white;
+        border-radius: 5px;
+    }
+
+    .data-user{
+        margin: 0; 
+        font-size: 24px; /* (ปรับขนาดได้ตามชอบ) */
+        font-weight: bold; /* (เพิ่มความหนาให้ดูเป็นหัวข้อ) */
+
+    }
+
+
 
     </style>
 </head>
@@ -111,13 +138,16 @@
             <div class="text-content">
                 <p class="logo-text">ที่ตั้ง</p>
                 <p class="logo-address">1310 Sukkasem Intersection Kamchadphai Road Thatchoengchum Subdistrict Mueang Sakon Nakhon District, เมืองสกลนคร ไทย</p>
-            </div>
+                
+                <a href="https://www.google.com/maps/search/%E0%B8%A3%E0%B9%89%E0%B8%B2%E0%B8%99%E0%B8%AD%E0%B8%B2%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B8%AA%E0%B8%81%E0%B8%A5/@17.1501376,104.1502428,12z?entry=s&sa=X&ved=1t%3A199789" class="map-link">ตำแหน่งที่ตั้ง</a>
+                <img src="image/location.png" class="map-image">
+                <p class = "data-user">ข้อมูลลูกข้อโดยเฉลี่ย</p>
 
+            </div>
+        
         </div> 
 
     </div> 
-
-    <p class="sub-heading">ตำแหน่งที่ตั้ง</p>
     
 </body>
 
