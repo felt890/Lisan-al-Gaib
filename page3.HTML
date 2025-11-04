@@ -1,28 +1,154 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Review</title>
+    <style>
+        body {
+            background-image: url('https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avg/backgrounds/30_g11_malistgarden.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            min-height: 100vh;
+            background-attachment: fixed;
+            margin: 0;
+            color: white; /* เปลี่ยนเป็นสีขาว เพื่อให้เห็นชัดเจนบนพื้นหลัง */
+            font-family: Arial, sans-serif; /* เพิ่ม font-family เพื่อให้อ่านง่ายขึ้น */
+        }
+
+        .container {
+            display: flex; /* ใช้ flexbox เพื่อจัดวางองค์ประกอบภายใน */
+            justify-content: center; /* จัดตรงกลางแนวนอน */
+            align-items: flex-start; /* จัดให้อยู่ด้านบน */
+            padding-top: 50px; /* เว้นระยะห่างจากขอบบน */
+            min-height: calc(100vh - 50px); /* ให้ container สูงเกือบเต็มจอ */
+        }
+
+        .news-box {
+            background-color: rgba(0, 0, 0, 0.7); /* พื้นหลังทึบแสงเล็กน้อย */
+            border: 1px solid #333; /* ขอบสีเทาเข้ม */
+            padding: 20px;
+            width: 70%; /* กำหนดความกว้างของกล่องข่าว */
+            max-width: 1000px; /* ไม่ให้กว้างเกินไป */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* เงาเล็กน้อย */
+            display: flex; /* ใช้ flexbox เพื่อจัดวางรูปและข้อความภายในกล่อง */
+            flex-wrap: wrap; /* ให้เนื้อหาขึ้นบรรทัดใหม่ได้ถ้าไม่พอ */
+            justify-content: space-around; /* จัดให้อยู่ห่างกัน */
+            align-items: flex-start; /* จัดชิดด้านบน */
+        }
+
+        .main-news-section {
+            width: 60%; /* กำหนดความกว้างของส่วนรูปภาพ */
+            min-width: 300px; /* ไม่ให้เล็กเกินไป */
+            margin-right: 20px; /* เว้นระยะห่างจากส่วนข่าวข้างๆ */
+        }
+
+        .main-news-image {
+            width: 100%; /* ให้รูปภาพเต็มความกว้างของส่วน */
+            height: auto; /* รักษาอัตราส่วน */
+            display: block; /* ลบช่องว่างใต้รูป */
+            border: 1px solid #555; /* ขอบรูปภาพ */
+        }
+
+        .main-news-title {
+            text-align: left;
+            margin-top: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px black;
+        }
+
+        .main-news-button {
+            background-color: #e74c3c; /* ปุ่มสีแดง */
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-block; /* เพื่อให้จัดตำแหน่งได้ดีขึ้น */
+            text-decoration: none; /* ลบขีดเส้นใต้ถ้าเป็นลิงก์ */
+            font-size: 0.9em;
+        }
+
+        .side-news-list {
+            width: 35%; /* กำหนดความกว้างของส่วนรายการข่าว */
+            min-width: 250px; /* ไม่ให้เล็กเกินไป */
+            text-align: left;
+        }
+
+        .side-news-item {
+            margin-bottom: 15px;
+            border-bottom: 1px dashed #555; /* เส้นประคั่น */
+            padding-bottom: 10px;
+        }
+
+        .side-news-item:last-child {
+            border-bottom: none; /* ไม่ต้องมีเส้นประตัวสุดท้าย */
+        }
+
+        .side-news-date {
+            font-size: 0.8em;
+            color: #ccc;
+        }
+
+        .side-news-hashtag {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #87CEEB; /* สีฟ้าอ่อนสำหรับ hashtag */
+            margin-top: 5px;
+        }
+
+        /* Responsive design สำหรับหน้าจอเล็กๆ */
+        @media (max-width: 768px) {
+            .news-box {
+                flex-direction: column; /* เปลี่ยนเป็นเรียงแนวตั้ง */
+                width: 90%;
+            }
+
+            .main-news-section,
+            .side-news-list {
+                width: 100%; /* ให้เต็มความกว้าง */
+                margin-right: 0;
+                margin-bottom: 20px; /* เพิ่มระยะห่างด้านล่าง */
+            }
+        }
+    </style>
 </head>
-<style>
-    body {
-        background-image: url('https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avg/backgrounds/30_g11_malistgarden.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        min-height: 100vh; 
-        background-attachment: fixed;
-        margin: 0;
-        color: white; /* เปลี่ยนเป็นสีขาว เพื่อให้เห็นชัดเจนบนพื้นหลัง */
-        text-align: center;
-        padding-top: 50px;
-        text-shadow: 1px 1px 3px black;
-    }
- </style>
 <body>
     <h1>Customer Reviews</h1>
-    <img src="https://web.hycdn.cn/siren/pic/20230122/89969a75098c07cd8e289bad831ea4a2.jpg">
+    <div class="container">
+        <div class="news-box">
+            <div class="main-news-section">
+                <img src="https://raw.githubusercontent.com/felt890/Lisan-al-Gaib/main/image/89969a75098c07cd8e289bad831ea4a2.jpg" alt="Breaking News" class="main-news-image">
+                <div class="main-news-title">
+                    BREAKING NEWS
+                    <p style="font-size:0.8em; color:#ccc;">#AUS小屋</p>
+                    <p style="font-size:0.8em; color:#ccc;">一起炖饭 (有点辣!)</p>
+                </div>
+                <a href="#" class="main-news-button">点击查看</a> </div>
 
+            <div class="side-news-list">
+                <div class="side-news-item">
+                    <div class="side-news-date">艺人发文 / 2023/04/28</div>
+                    <div class="side-news-hashtag">#AUS小屋</div>
+                </div>
+                <div class="side-news-item">
+                    <div class="side-news-date">艺人发文 / 2023/03/29</div>
+                    <div class="side-news-hashtag">#D.D.D.PHOTO</div>
+                </div>
+                <div class="side-news-item">
+                    <div class="side-news-date">艺人发文 / 2023/02/19</div>
+                    <div class="side-news-hashtag">#AUS小屋</div>
+                </div>
+                <div class="side-news-item">
+                    <div class="side-news-date">艺人发文 / 2023/01/22</div>
+                    <div class="side-news-hashtag">#EMPEROR</div>
+                </div>
+                <div class="side-news-item">
+                    <div class="side-news-date">艺人发文 / 2022/12/27</div>
+                    <div class="side-news-hashtag">#D.D.D.PHOTO</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
-
 </html>
