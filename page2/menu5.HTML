@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>แกงพะแนง</title>
+  <style>
+  body {
+    background-image: url('https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avg/backgrounds/30_g11_malistgarden.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh; 
+    background-attachment: fixed;
+    margin: 0;
+    color: white; /* เปลี่ยนเป็นสีขาวเพื่อให้เห็นบนพื้นหลังดำ */
+    text-align: center; /* จัดเนื้อหาทั้งหมดอยู่กลาง (ถ้า main-content แคบกว่าจอ) */
+    padding-top: 50px;
+    text-shadow: 1px 1px 3px black;
+    font-family: Arial, sans-serif; /* เพิ่ม font-family ให้อ่านง่ายขึ้น */
+  }
+
+  /* VVV --- (เพิ่มใหม่) กล่องหลักสำหรับ Layout --- VVV */
+  .main-content {
+      display: grid; /* เปิดใช้งาน Grid */
+      grid-template-columns: 1fr 2fr; /* คอลัมน์ซ้าย (รูป) 1 ส่วน, คอลัมน์ขวา (ข้อความ) 2 ส่วน */
+      gap: 30px; /* ระยะห่างระหว่างคอลัมน์ */
+      max-width: 1200px; /* ความกว้างสูงสุดของเนื้อหาทั้งหมด */
+      margin: 100px auto 0 auto; /* จัดให้อยู่กลางหน้าจอ และเว้นระยะจากด้านบน */
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.5); /* เพิ่มพื้นหลังโปร่งแสงเพื่อให้ข้อความอ่านง่าย */
+      border-radius: 10px;
+  }
+
+  /* VVV --- (เพิ่มใหม่) สไตล์สำหรับส่วนรูปภาพ --- VVV */
+  .image-section {
+      display: flex; /* ใช้ flexbox เพื่อจัดรูปให้อยู่กลางแนวตั้ง */
+      align-items: center; /* จัดกลางแนวตั้ง */
+      justify-content: center; /* จัดกลางแนวนอน */
+  }
+
+  /* VVV --- (แก้ไข) สไตล์สำหรับรูปภาพจริง --- VVV */
+  .image-section img {
+      width: 100%; /* กว้างเต็มพื้นที่ของ image-section */
+      height: auto;
+      max-width: 250px; /* VVV จำกัดขนาดสูงสุดของรูป (ปรับตรงนี้) VVV */
+      border-radius: 5px;
+      border: 2px solid white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  }
+
+  /* VVV --- (เพิ่มใหม่) สไตล์สำหรับส่วนข้อความ --- VVV */
+  .text-section {
+      text-align: left; /* จัดข้อความชิดซ้าย */
+      padding-right: 20px; /* เว้นระยะจากขอบขวาเล็กน้อย */
+  }
+
+  /* VVV --- สไตล์สำหรับหัวข้อ H2 --- VVV */
+  .text-section h2 {
+      margin-top: 0;
+      font-size: 2.2em;
+      margin-bottom: 10px;
+      text-shadow: none; /* ลบ text-shadow ของ h2 ถ้าไม่ต้องการ */
+  }
+
+  /* VVV --- สไตล์สำหรับข้อความเล็กๆ --- VVV */
+  .text-section p.sub-title {
+      font-size: 1.1em;
+      color: lightgray;
+      margin-bottom: 20px;
+  }
+  .text-section p.description {
+      font-size: 1em;
+      line-height: 1.6;
+      margin-bottom: 30px;
+  }
+
+  /* VVV --- สไตล์สำหรับปุ่ม Play --- VVV */
+  .play-button {
+      display: inline-block; /* ทำให้เป็นปุ่ม */
+      padding: 10px 25px;
+      border: 2px solid white;
+      border-radius: 5px;
+      color: white;
+      text-decoration: none;
+      font-size: 1.2em;
+      transition: background-color 0.3s, color 0.3s;
+  }
+  .play-button:hover {
+      background-color: white;
+      color: black;
+      cursor: pointer;
+  }
+
+  </style>
+</head>
+
+<body>
+    <div class="main-content">
+        <div class="image-section">
+            <img src="https://img.wongnai.com/p/400x0/2017/06/22/bbf899f7ab4341dea4aec6330c2afafd.jpg">
+        </div>
+
+        <div class="text-section">
+            <h2>ข่าวมันไก่</h2>
+            <p class="sub-title">ราคา:45บาท</p>
+            <p class="description">ข้าวมันไก่ ใช้ระยะเวลาประมาณในการ 20 นาที</p>
+            <a href="#" class="play-button">สั่งจอง</a>
+        </div>
+    </div>
+</body>
+</html>
