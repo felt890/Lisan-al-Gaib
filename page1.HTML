@@ -18,22 +18,82 @@
         text-shadow: 1px 1px 3px black;
     }
 
+    /* VVV --- กล่องสำหรับครอบรูป --- VVV */
+    .image-container {
+        /* 1. กำหนดความกว้าง */
+        width: 60%; 
+        max-width: 800px;
+        
+        /* 2. จัด "กล่อง" นี้ให้อยู่กลาง */
+        margin: 40px auto 0 auto;
+    }
+
+
     /* --- CSS สำหรับรูปภาพเดี่ยว --- */
     .single-image {
-        display: block; /* ทำให้รูปภาพเป็น block element */
-        margin: 40px auto; /* จัดกลางอัตโนมัติ (บน-ล่าง 40px, ซ้าย-ขวา auto) */
-        width: 60%; /* กำหนดความกว้างของรูปภาพ ไม่ให้ใหญ่เกินไป */
-        max-width: 800px; /* จำกัดขนาดสูงสุดของรูปภาพ */
-        height: auto; /* รักษาสัดส่วนของภาพ */
+        display: block; 
+        width: 100%; /* 3. ให้รูปใหญ่ "เต็ม" กล่อง .image-container */
+        height: auto; 
         border: 3px solid white;
         border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* เพิ่มเงาให้รูปดูมีมิติ */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
     }
 
     /* (สำหรับ h1) เว้นระยะห่างจากด้านล่างเล็กน้อย */
     h1 {
         margin-bottom: 20px;
     }
+
+    /* VVV --- กล่องจัดกลุ่มโลโก้กับข้อความ --- VVV */
+    .logo-area {
+        /* 1. สั่งให้ของข้างใน (โลโก้, กล่องข้อความ) เรียงแนวนอน */
+        display: flex; 
+        
+        /* 2. จัดให้โลโก้และกล่องข้อความอยู่ "กึ่งกลางแนวตั้ง" */
+        align-items: center; 
+        
+        /* 3. ย้าย margin ที่เคยอยู่บน .small-logo มาไว้ที่นี่แทน */
+        margin-left: 10px;  /* (เว้น 10px จากขอบซ้าย) */
+        margin-right: auto; /* (ดันให้ชิดซ้าย) */
+        margin-top: 10px;   /* (เว้น 10px จากรูปบน) */
+    }
+
+    /* VVV --- กล่องสำหรับห่อข้อความโดยเฉพาะ --- VVV */
+    .text-content {
+        text-align: left;   /* บังคับให้ข้อความในกล่องนี้ชิดซ้าย */
+        margin-left: 10px;  /* เว้นระยะห่างจากโลโก้ */
+    }
+
+    /* VVV --- สไตล์สำหรับข้อความ "ที่ตั้ง" --- VVV */
+    .logo-text {
+        margin: 0; 
+        font-size: 24px; /* (ปรับขนาดได้ตามชอบ) */
+        font-weight: bold; /* (เพิ่มความหนาให้ดูเป็นหัวข้อ) */
+    }
+
+    /* VVV --- (แก้ไขล่าสุด) สไตล์สำหรับ "ที่อยู่" --- VVV */
+    .logo-address {
+        margin: 5px 0 0 0; /* เพิ่มระยะห่างด้านบน 5px */
+        font-size: 24px; /* VVV ขยายขนาดตัวอักษร VVV */
+    }
+
+    /* VVV --- CSS สำหรับรูปเล็ก --- VVV */
+    .small-logo {
+        flex-shrink: 0; /* ป้องกันไม่ให้รูปยืดหดตัว */
+        width: 50px; 
+        height: 50px; 
+        object-fit: cover; 
+        border-radius: 50%; 
+        border: 2px solid white; 
+    }
+
+    /* VVV --- (เพิ่มใหม่) สไตล์สำหรับข้อความล่างสุด --- VVV */
+    .sub-heading {
+        margin-top: 30px; /* เว้นระยะห่างจากขอบบน */
+        font-size: 24px; /* ตั้งขนาดฟอนต์ให้เท่ากัน */
+        font-weight: bold;
+    }
+
     </style>
 </head>
 
@@ -41,8 +101,24 @@
 
     <h1>ข้อมูลร้านอาหาร</h1>
     
-    <img src="https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avg/backgrounds/30_g1_durinstreet.png" class="single-image">
-    <img src="image-removebg-preview">
+    <div class="image-container">
+
+        <img src="https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avg/backgrounds/30_g1_durinstreet.png" class="single-image">
+        
+        <div class="logo-area">
+            <img src="image/image-removebg-preview.jpg" class="small-logo"> 
+            
+            <div class="text-content">
+                <p class="logo-text">ที่ตั้ง</p>
+                <p class="logo-address">1310 Sukkasem Intersection Kamchadphai Road Thatchoengchum Subdistrict Mueang Sakon Nakhon District, เมืองสกลนคร ไทย</p>
+            </div>
+
+        </div> 
+
+    </div> 
+
+    <p class="sub-heading">ตำแหน่งที่ตั้ง</p>
+    
 </body>
 
 </html>
