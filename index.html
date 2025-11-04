@@ -1,92 +1,211 @@
-<!DOCTYPE html>
-<html>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ 
 <head>
-  <title>Lisan al Gaib</title>
-  <style>
-  body {
-    background-image: url('https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avg/backgrounds/30_g11_malistgarden.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    /* หมายเหตุ: หากเนื้อหายาวเกินหน้าจอ 
-       การใช้ height: 100vh + background-attachment: fixed
-       อาจทำให้การเลื่อนดูแปลกๆ 
-       ถ้ามีปัญหา ลองเปลี่ยน height: 100vh เป็น min-height: 100vh ครับ
-    */
-    min-height: 100vh; 
-    background-attachment: fixed;
-    margin: 0;
-    color: black; 
-    text-align: center;
-    padding-top: 50px;
-    text-shadow: 1px 1px 3px black;
-  }
-  
-  .image-container {
-    display: flex;
-    justify-content: space-evenly;
-    /* เปลี่ยนเป็น 'flex-start' เพื่อให้กล่องที่สูงไม่เท่ากัน ชิดบน */
-    align-items: flex-start; 
-    flex-wrap: wrap;
-    padding: 20px 0;
-  }
+     <style>
+        body {
+            * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: arial;
+}
+* a {
+  text-decoration: none;
+}
+* li {
+  list-style: none;
+}
+.container {
+  min-height: 120vh;
+  padding-bottom: 50px;
+  margin: 0 auto;
+  position: relative;
+}
+.bg {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.bg::after {
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  filter: brightness(45%);
+  background-image: url("https://www.ktc.co.th/pub/media/Article/10/ktcHouseofTango-013.webp");
+  background-size: cover;
+  background-position: center;
+}
+.navBar {
+  display: flex;
+  width: 85%;
+  justify-content: space-between;
+  margin: 0 auto;
+  align-items: center;
+  height: 15vh;
+}
+.navBar ul {
+  display: flex;
+  align-items: center;
+}
+.navBar ul li {
+  padding: 0 25px;
+}
+.navBar ul li a {
+  font-size: 1rem;
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+}
+.navBar .logo a {
+  font-size: 2.3rem;
+  color: #fff;
+}
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  align-items: center;
+}
+.phuket {
+  color: #fff;
+  padding: 25px;
+}
+.card {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 20px;
+}
+.card h2 {
+  color: #fff;
+  position: absolute;
+  bottom: 15px;
+  left: 20px;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+}
+.card .box1,
+.box2,
+.box3,
+.box4 {
+  width: 90%;
+  height: 220px;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  border-radius: 25px;
+  cursor: pointer;
+}
+.box1 {
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0aKB3DbWGSNA7m_lO0EYh4Q2wPRJ-E_3k7w&s");
+}
+.box2 {
+  background-image: url("https://img.wongnai.com/p/1920x0/2018/12/11/54785cc9d37140a790fcff97dbf876d3.jpg");
+}
+.box3 {
+  background-image: url("https://recipe.sgethai.com/wp-content/uploads/2019/03/26022025-chicken-green-curry-2.webp");
+}
+.box4 {
+  background-image: url("https://images.aws.nestle.recipes/original/9a335435945f06cc5379513b5f7f6042_artboard_1.jpg");
+}
+.phuket h2 {
+  font-size: 2rem;
+  letter-spacing: 2.8px;
+}
+.text {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.txt h1 {
+  font-size: 7rem;
+}
+.phuket p {
+  opacity: 0.4;
+}
+.tnx h2 i {
+  color: #fd7e13;
+}
+.card div {
+  transition: 0.5s;
+}
+.card div:hover {
+  transition: 0.3s;
+  transform: translateY(-10px);
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
 
-  /* --- อัปเดต CSS --- 
-    เราจะย้ายความกว้าง 30% 
-    จากตัวรูป (.gallery-image) มาไว้ที่กล่องครอบ (.gallery-item) แทน
-  */
 
-  /* 1. นี่คือ "กล่อง" ที่เป็น 1 ใน 3 ชิ้น (มีทั้งรูปและข้อความ) */
-  .gallery-item {
-    width: 30%; /* ให้ "กล่อง" นี้ กว้าง 30% */
-    text-align: center; /* จัดข้อความข้างในให้ชิดกลาง */
-  }
+        }
 
-  /* 2. ทำให้รูปภาพกว้าง 100% "เต็มกล่อง" ของมัน */
-  .gallery-image {
-    width: 100%; /* ให้รูปภาพกว้างเต็ม .gallery-item */
-    height: auto;
-    border: 3px solid white;
-    border-radius: 10px;
-    /* ป้องกันขอบ 3px ทำให้กล่องล้น */
-    box-sizing: border-box; 
-  }
-  
-  /* (แนะนำ) จัดสไตล์ข้อความใต้ภาพเล็กน้อย */
-  .gallery-item p {
-    margin-top: 10px; /* เว้นช่องไฟจากรูป */
-    font-size: 1.1em; /* ขยายตัวอักษรนิดหน่อย */
-    font-weight: bold;
-  }
 
-</style>
+     </style>
 </head>
-
-<body>
-
-  <h1>ร้านลีซานอัลไกอีบ</h1>
-  <p>Lisan al-Gaib</p>
-
-  <div class="image-container">
-    
-    <div class="gallery-item">
-      <img src="https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avg/backgrounds/30_g1_durinstreet.png" class="gallery-image">
-      <a href="http://127.0.0.1:5500/page1.HTML">ข้อมูลร้านอาหาร</a>
+<div class="container bg">
+  <div class="navBar">
+    <div class="logo">
+      <a href="#">
+        <i class="fas fa-suitcase-rolling"></i>
+      </a>
     </div>
-    
-    <div class="gallery-item">
-      <img src="https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avg/backgrounds/30_g10_lakegarden.png" class="gallery-image">
-      <a href="http://127.0.0.1:5500/page2.HTML">เมนูร้านอาหาร</a>
-    </div>
-    
-    <div class="gallery-item">
-      <img src="https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avg/backgrounds/30_g8_malistroom.png" class="gallery-image">
-      <a href="http://127.0.0.1:5500/page3.HTML">Review</a>
-    </div>
-  
+    <ul>
+      <li><a href="http://127.0.0.1:5500/page1.HTML">ข้อมูลร้านอาหาร</a></li>
+      <li><a href="http://127.0.0.1:5500/page2.HTML">เมนู</a></li>
+      <li><a href="http://127.0.0.1:5500/page3.HTML">Reviews</a></li>
+      
+    </ul>
   </div>
 
-</body>
+  <div class="content">
+    <div class="phuket" style="width:50%;">
+      <div class="tnx">
+        <h2><i class="fas fa-map-marker-alt"></i> Thailand</h2>
+      </div>
+      <div class="txt">
+        <h1>Lisan</h1>
+        <h1>Al-Gaib</h1>
+      </div>
+      <p>ร้านอาหารไทย “ลีซานอัลไกอีบ” หลอมรวมความอร่อยของอาหารไทยพื้นบ้านที่มีความร่วมสมัย โดยทีมเชฟชาวไทยรุ่นใหม่ ที่มีใจรักในการทำอาหารไทย ยกระดับอาหารและเลือกวัตถุดิบพื้นบ้าน ตลอดจนคัดสรรตำรับอาหารไทยโบราณที่หาทานยาก นำมารังสรรค์ความอร่อยด้วยวัถุดิบคุณภาพพิถีพิถัน ให้ลูกค้าได้รับประทานอาหารไทยรสชาติเข้มข้นตามตำรับไทยได้ง่ายขึ้น</p>
+    </div>
+    <div class="card" style="width:50%;">
+      <a href="http://127.0.0.1:5500/page2/menu1.HTML" target="_blank">
+        <div class="box1">
+          <h2>ข้าวผัด</h2>
+        </div>
+      </a>
+      <a href="http://127.0.0.1:5500/page2/menu8.HTML" target="_blank">
+        <div class="box2">
+          <h2>พะโล้</h2>
+        </div>
+      </a>
+      <a href="http://127.0.0.1:5500/page2/menu3.HTML" target="_blank">
+        <div class="box3">
+          <h2>แกงเขียวหวาน</h2>
+        </div>
+      </a>
+      <a href="http://127.0.0.1:5500/page2/menu10.HTML" target="_blank">
+        <div class="box4">
+          <h2>ผัดผัก</h2>
+        </div>
+      </a>
+      <!--       <div class="box2">
+        <h2>Island</h2>
+      </div>
+      <div class="box3">
+        <h2>Mountain</h2>
+      </div>
+      <div class="box4">
+        <h2>Scenery</h2>
+      </div> -->
+    </div>
+  </div>
 
-</html>
+</div>
