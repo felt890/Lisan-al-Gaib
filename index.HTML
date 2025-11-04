@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Lisan al Gaib</title>
+  <style>
+  body {
+    background-image: url('https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avg/backgrounds/30_g11_malistgarden.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* หมายเหตุ: หากเนื้อหายาวเกินหน้าจอ 
+       การใช้ height: 100vh + background-attachment: fixed
+       อาจทำให้การเลื่อนดูแปลกๆ 
+       ถ้ามีปัญหา ลองเปลี่ยน height: 100vh เป็น min-height: 100vh ครับ
+    */
+    min-height: 100vh; 
+    background-attachment: fixed;
+    margin: 0;
+    color: black; 
+    text-align: center;
+    padding-top: 50px;
+    text-shadow: 1px 1px 3px black;
+  }
+  
+  .image-container {
+    display: flex;
+    justify-content: space-evenly;
+    /* เปลี่ยนเป็น 'flex-start' เพื่อให้กล่องที่สูงไม่เท่ากัน ชิดบน */
+    align-items: flex-start; 
+    flex-wrap: wrap;
+    padding: 20px 0;
+  }
+
+  /* --- อัปเดต CSS --- 
+    เราจะย้ายความกว้าง 30% 
+    จากตัวรูป (.gallery-image) มาไว้ที่กล่องครอบ (.gallery-item) แทน
+  */
+
+  /* 1. นี่คือ "กล่อง" ที่เป็น 1 ใน 3 ชิ้น (มีทั้งรูปและข้อความ) */
+  .gallery-item {
+    width: 30%; /* ให้ "กล่อง" นี้ กว้าง 30% */
+    text-align: center; /* จัดข้อความข้างในให้ชิดกลาง */
+  }
+
+  /* 2. ทำให้รูปภาพกว้าง 100% "เต็มกล่อง" ของมัน */
+  .gallery-image {
+    width: 100%; /* ให้รูปภาพกว้างเต็ม .gallery-item */
+    height: auto;
+    border: 3px solid white;
+    border-radius: 10px;
+    /* ป้องกันขอบ 3px ทำให้กล่องล้น */
+    box-sizing: border-box; 
+  }
+  
+  /* (แนะนำ) จัดสไตล์ข้อความใต้ภาพเล็กน้อย */
+  .gallery-item p {
+    margin-top: 10px; /* เว้นช่องไฟจากรูป */
+    font-size: 1.1em; /* ขยายตัวอักษรนิดหน่อย */
+    font-weight: bold;
+  }
+
+</style>
+</head>
+
+<body>
+
+  <h1>ร้านลีซานอัลไกอีบ</h1>
+  <p>Lisan al-Gaib</p>
+
+  <div class="image-container">
+    
+    <div class="gallery-item">
+      <img src="https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avg/backgrounds/30_g1_durinstreet.png" class="gallery-image">
+      <a href="http://127.0.0.1:5500/page1.HTML">ข้อมูลร้านอาหาร</a>
+    </div>
+    
+    <div class="gallery-item">
+      <img src="https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avg/backgrounds/30_g10_lakegarden.png" class="gallery-image">
+      <a href="http://127.0.0.1:5500/page2.HTML">เมนูร้านอาหาร</a>
+    </div>
+    
+    <div class="gallery-item">
+      <img src="https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avg/backgrounds/30_g8_malistroom.png" class="gallery-image">
+      <a href="http://127.0.0.1:5500/page3.HTML">Review</a>
+    </div>
+  
+  </div>
+
+</body>
+
+</html>
