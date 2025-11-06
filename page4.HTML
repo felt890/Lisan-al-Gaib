@@ -3,375 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arknights Full Layout (with Background Image)</title>
+    <title>3D Social Tiles (Combined Code)</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
     <style>
-        /* --- General Styles --- */
         body {
-            font-family: Arial, sans-serif;
-            color: #333;
             margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-image: url('https://www.ktc.co.th/pub/media/Article/10/ktcHouseofTango-013.webp');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-color: #333;
+            padding: 0;
+            background: #ccc; 
+            font-family: "Roboto Condensed", sans-serif;
         }
 
-        /* --- Main Container --- */
-        .ark-container {
-            display: flex;
-            width: 100%;
-            max-width: 1200px;
-            background-color: rgba(233, 233, 233, 0.95);
-            border: 1px solid #555;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-        }
-
-        /* --- 1. Main Content (Left Side) --- */
-        .ark-main-content {
-            flex: 2;
-            background-color: #000;
-        }
-
-        /* --- 1a. Slider Container --- */
-        .slider-container {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-        }
-
-        .slide {
+        /* จัดตำแหน่ง List ให้อยู่กลางจอ */
+        ul {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.5s ease-in-out;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            margin: 0;
+            padding: 0;
         }
 
-        .slide.active {
-            opacity: 1;
-            visibility: visible;
+        ul li {
+            list-style: none;
+            margin: 0 5px;
         }
 
-        .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        /* สไตล์ปุ่ม (ไทล์) หลัก */
+        ul li a {
+            text-decoration: none;
             display: block;
+            width: 210px;
+            height: 80px;
+            background: #fff;
+            text-align: left;
+            padding-left: 20px;
+            transform: rotate(-30deg) skewX(25deg) translate(0, 0);
+            transition: 0.5s;
+            box-shadow: -20px 20px 10px rgba(0, 0, 0, 0.5);
         }
 
-        .slide-caption {
+        /* สร้างขอบด้านล่าง 3D */
+        ul li a:before {
+            content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.75);
-            color: white;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-sizing: border-box;
-            z-index: 2;
+            top: 10px;
+            left: -20px;
+            height: 100%;
+            width: 20px;
+            background: #b1b1b1;
+            transform: rotate(0deg) skewY(-45deg);
+            transition: 0.5s;
         }
 
-        .slide-caption h3 {
+        /* สร้างขอบด้านข้าง 3D */
+        ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: -10px;
+            height: 20px;
+            width: 100%;
+            background: #b1b1b1;
+            transform: rotate(0deg) skewX(-45deg);
+            transition: 0.5s;
+        }
+
+        /* สไตล์ไอคอน */
+        ul li a .fa {
+            font-size: 40px;
+            color: #262626;
+            line-height: 80px;
+            transition: 0.5s;
+            padding-right: 14px;
+        }
+
+        /* สไตล์ข้อความ */
+        ul li a span {
+            padding: 0;
             margin: 0;
-            font-size: 1.2rem;
+            position: absolute;
+            top: 30px;
+            color: #262626;
+            letter-spacing: 4px;
+            transition: 0.5s;
         }
 
-        .slide-caption a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
+        /* === เอฟเฟกต์ตอน Hover === */
+
+        ul li a:hover {
+            transform: rotate(-30deg) skew(25deg) translate(20px, -15px);
+            box-shadow: -50px 50px 50px rgba(0, 0, 0, 0.5);
         }
 
-        /* --- 1b. Slider Dots (ปุ่มสี่เหลี่ยม) --- */
-        .slider-dots {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            padding: 12px 0;
+        ul li a:hover .fa,
+        ul li a:hover span {
+            color: #fff;
         }
 
-        .dot {
-            width: 25px;
-            height: 8px;
-            background-color: #555;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+        /* --- กำหนดสี Hover แยกตาม Social Media --- */
 
-        .dot:hover {
-            background-color: #888;
-        }
+        /* 1. Facebook */
+        ul li:hover:nth-child(1) a { background: #3b5998; }
+        ul li:hover:nth-child(1) a:before { background: #2e4a86; }
+        ul li:hover:nth-child(1) a:after { background: #4a69ad; }
 
-        .dot.active {
-            background-color: #fff;
-            width: 40px;
-        }
+        /* 2. Twitter */
+        ul li:hover:nth-child(2) a { background: #00aced; }
+        ul li:hover:nth-child(2) a:before { background: #097aa5; }
+        ul li:hover:nth-child(2) a:after { background: #53b9e0; }
 
-        /* --- 2. Sidebar (Right Side) --- */
-        .ark-sidebar {
-            flex: 1;
-            padding: 10px;
-            border-left: 1px solid #ccc;
-            display: flex;
-            flex-direction: column;
-            background-color: rgba(233, 233, 233, 0.85);
-        }
+        /* 3. Google */
+        ul li:hover:nth-child(3) a { background: #dd4b39; }
+        ul li:hover:nth-child(3) a:before { background: #b33a2b; }
+        ul li:hover:nth-child(3) a:after { background: #e66a5a; }
 
-        .sidebar-tabs {
-            display: flex;
-            border-bottom: 2px solid #aaa;
-        }
-
-        .tab-btn {
-            flex-grow: 1;
-            padding: 10px;
-            border: none;
-            background-color: transparent;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 0.9rem;
-            color: #777;
-            border-bottom: 3px solid transparent;
-            margin-bottom: -2px;
-        }
-
-        .tab-btn.active {
-            color: #111;
-            border-bottom-color: #555;
-        }
-
-        .sidebar-list {
-            margin-top: 10px;
-            flex-grow: 1;
-        }
-
-        .list-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 5px;
-            border-bottom: 1px solid #ccc;
-            font-size: 0.9rem;
-        }
-        
-        /* * เพิ่ม Style นี้เผื่อไว้สำหรับ Link ที่คุณใส่เข้ามา */
-        .list-item a {
-            text-decoration: none;
-            color: #0056b3;
-            font-weight: bold;
-        }
-        .list-item a:hover {
-            text-decoration: underline;
-        }
-
-        .item-title {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 70%;
-        }
-
-        .item-date {
-            color: #666;
-            font-size: 0.85rem;
-            white-space: nowrap;
-        }
-
-        .read-more-btn {
-            width: 100%;
-            margin-top: 15px;
-            padding: 10px;
-            background-color: #f9f9f9;
-            border: 1px solid #bbb;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 1rem;
-            transition: background-color 0.2s;
-        }
-
-        .read-more-btn:hover {
-            background-color: #fff;
-        }
+        /* 4. Instagram */
+        ul li:hover:nth-child(4) a { background: #e4405f; }
+        ul li:hover:nth-child(4) a:before { background: #d81c3f; }
+        ul li:hover:nth-child(4) a:after { background: #e8637c; }
     </style>
 </head>
 <body>
 
-    <div class="ark-container">
-
-        <div class="ark-main-content">
-
-            <div class="slider-container">
-                
-                <div class="slide active" data-title="">
-                    <img src="image/รูปภาพ2.png" alt="Slide 1">
-                </div>
-                
-                <div class="slide" data-title="">
-                    <img src="image/รูปภาพ3.png" alt="Slide 2">
-                </div>
-
-                <div class="slide" data-title="">
-                    <img src="image/รูปภาพ4.png" alt="Slide 3">
-                </div>
-                
-                <div class="slide" data-title="">
-                    <img src="https://placehold.co/800x450/0033CC/FFFFFF?text=Vector+Breakthrough" alt="Slide 4">
-                </div>
-
-                <div class="slide-caption">
-                    <h3 id="caption-title"></h3>
-                    <a href="#">READ >></a>
-                </div>
-            </div>
-
-            <div class="slider-dots" id="slider-dots">
-            </div>
-            
-        </div>
-
-        <div class="ark-sidebar">
-            
-            <div class="sidebar-tabs">
-                <button class="tab-btn active" data-content="latest">ข้อมูลร้านค้า</button>
-                <button class="tab-btn" data-content="event">EVENT</button>
-                <button class="tab-btn" data-content="contest">อื่นๆ</button>
-            </div>
-
-            <div class="sidebar-list" id="sidebar-list">
-            </div>
-
-            <button class="read-more-btn"> +</button>
-        </div>
-
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            
-            // --- 1. ส่วนจัดการ Slider ---
-            const slides = document.querySelectorAll('.slide');
-            const captionTitle = document.getElementById('caption-title');
-            const dotsContainer = document.getElementById('slider-dots');
-            let currentSlide = 0;
-
-            slides.forEach((slide, index) => {
-                const dot = document.createElement('span');
-                dot.classList.add('dot');
-                dot.dataset.slide = index;
-                if (index === 0) {
-                    dot.classList.add('active');
-                }
-                dot.addEventListener('click', function() {
-                    showSlide(parseInt(this.dataset.slide));
-                });
-                dotsContainer.appendChild(dot);
-            });
-
-            const dots = document.querySelectorAll('.dot');
-
-            function showSlide(index) {
-                slides.forEach((slide, i) => {
-                    slide.classList.remove('active');
-                    dots[i].classList.remove('active');
-                });
-                slides[index].classList.add('active');
-                dots[index].classList.add('active');
-                captionTitle.textContent = slides[index].dataset.title;
-                currentSlide = index;
-            }
-
-            setInterval(() => {
-                let nextSlide = (currentSlide + 1) % slides.length;
-                showSlide(nextSlide);
-            }, 5000);
-            
-            showSlide(0);
-
-            // --- 2. ส่วนจัดการ Tab ---
-            const tabData = {
-                latest: [
-                    { title: "เบอร์โทรศัพทร์ 061-681-xxxx", date: "" },
-                    { title: "ร้านเปิดตั้งแต่ 8.00น.-20.00น.", date: "" },
-                    
-                    // --- 🌟 จุดที่ 1: แก้ไขข้อมูลตรงนี้ ---
-                    // เราแทนที่ Object เดิมด้วย String ที่คุณให้มา
-                    '<a href="https://www.google.com/maps/search/%E0%B8%A3%E0%B9%89%E0%B8_B2%E0%B8_99%E0%B8_AD%E0%B8_B2%E0%B8_AB%E0%B8_B2%E0%B8_A3%E0%B8_AA%E0%B8_81%E0%B8_A5/@17.1501376,104.1502428,12z?entry=s&sa=X&ved=1t%3A199789" class="map-link">ตำแหน่งที่ตั้ง</a>',
-                    // ---------------------------------
-
-                    { title: "ช่วงเวลาที่คนน้อยที่สุด:ช่วงเช้า", date: "" },
-                    { title: "ช่วงเวลาที่ลูกค้ามากที่สุด:ช่วงเที่ยง", date: "" }
-                   
-                ],
-                event: [
-                    { title: "เทศกาลดราคา", date: "28/10/2568" },
-                    { title: "เทศกาลรดคา", date: "4/11/2568" },
-                    { title: "เทศกาลดราคา", date: "12/9/2568" }
-                ],
-                contest: [
-                    { title: "Fan Art Contest: Summer", date: "1/6/2568" },
-                    { title: "Music Contest: Rhodes Island", date: "15/3/2568" }
-                ]
-            };
-
-            const tabButtons = document.querySelectorAll('.tab-btn');
-            const sidebarList = document.getElementById('sidebar-list');
-
-            // --- 🌟 จุดที่ 2: แก้ไขฟังก์ชันนี้ ---
-            function updateSidebarContent(contentKey) {
-                sidebarList.innerHTML = '';
-                const data = tabData[contentKey];
-                data.forEach(item => {
-                    const listItem = document.createElement('div');
-                    listItem.classList.add('list-item');
-
-                    // * เพิ่มเงื่อนไขตรวจสอบประเภทข้อมูล
-                    if (typeof item === 'string') {
-                        // ถ้า item เป็น String (เช่น ลิงก์ของคุณ)
-                        // ให้ใส่ HTML นั้นลงไปใน list-item โดยตรง
-                        listItem.innerHTML = item;
-                    } else {
-                        // ถ้า item เป็น Object (เหมือนข้อมูลอื่นๆ)
-                        // ให้ใช้รูปแบบ title และ date เหมือนเดิม
-                        listItem.innerHTML = `
-                            <span class="item-title">${item.title}</span>
-                            <span class="item-date">${item.date}</span>
-                        `;
-                    }
-                    // ---------------------------------
-
-                    sidebarList.appendChild(listItem);
-                });
-            }
-
-            tabButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    updateSidebarContent(this.dataset.content);
-                });
-            });
-            
-            updateSidebarContent('latest');
-
-        });
-    </script>
+    <ul>
+        <li>
+            <a href="#">
+                <i class="fab fa-facebook-f fa"></i>
+                <span>Facebook</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fab fa-twitter fa"></i>
+                <span>Twitter</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://www.google.com/">
+                <i class="fab fa-google-plus-g fa"></i>
+                <span>Google</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fab fa-instagram fa"></i>
+                <span>Instagram</span>
+            </a>
+        </li>
+    </ul>
 
 </body>
 </html>
